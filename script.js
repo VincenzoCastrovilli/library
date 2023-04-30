@@ -39,6 +39,15 @@ function renderCard() {
       renderCard();
     });
     card.appendChild(deleteButton);
+    const changeButton = document.createElement('button');
+    changeButton.textContent = 'CHANGE';
+    changeButton.addEventListener('click', () => {
+      const index = card.getAttribute('data-index');
+      myLibrary[index].read = !myLibrary[index].read;
+      bookContainer.innerHTML = '';
+      renderCard();
+    });
+    card.appendChild(changeButton);
     bookContainer.appendChild(card);
   });
 }

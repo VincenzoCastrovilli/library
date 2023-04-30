@@ -30,6 +30,15 @@ function renderCard() {
     read.classList.add('book-read');
     read.textContent = elem.read;
     card.appendChild(read);
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'DELETE';
+    deleteButton.addEventListener('click', () => {
+      const index = card.getAttribute('data-index');
+      myLibrary.splice(index, 1);
+      bookContainer.innerHTML = '';
+      renderCard();
+    });
+    card.appendChild(deleteButton);
     bookContainer.appendChild(card);
   });
 }
@@ -47,7 +56,6 @@ closeButton.addEventListener('click', () => {
 });
 
 function addBookToLibrary(event) {
-  event.preventDefault();
   const author = document.getElementById('author').value;
   const title = document.getElementById('title').value;
   const pages = document.getElementById('pages').value;
@@ -58,6 +66,7 @@ function addBookToLibrary(event) {
   myLibrary.push(book);
 
   bookContainer.innerHTML = '';
+  event.preventDefault();
 
   renderCard();
 }

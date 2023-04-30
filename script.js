@@ -69,13 +69,19 @@ function addBookToLibrary(event) {
   const title = document.getElementById('title').value;
   const pages = document.getElementById('pages').value;
   const status = document.querySelector('input[type="radio"]:checked').value;
+  event.preventDefault();
 
   const book = new Book(author, title, pages, status);
 
   myLibrary.push(book);
 
   bookContainer.innerHTML = '';
-  event.preventDefault();
+
+  document.getElementById('author').value = '';
+  document.getElementById('title').value = '';
+  document.getElementById('pages').value = '';
+  document.querySelector('input[type="radio"]:checked').checked = false;
+  modal.style.display = 'none';
 
   renderCard();
 }

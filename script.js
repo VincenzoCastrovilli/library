@@ -16,21 +16,22 @@ function renderCard() {
     card.setAttribute('data-index', i);
     const author = document.createElement('div');
     author.classList.add('book-author');
-    author.textContent = elem.author;
+    author.textContent = `by ${elem.author}`;
     card.appendChild(author);
     const title = document.createElement('div');
     title.classList.add('book-title');
-    title.textContent = elem.title;
+    title.textContent = `${elem.title}`;
     card.appendChild(title);
     const pages = document.createElement('div');
     pages.classList.add('book-pages');
-    pages.textContent = elem.pages;
+    pages.textContent = `${elem.pages} pages`;
     card.appendChild(pages);
     const read = document.createElement('div');
     read.classList.add('book-read');
-    read.textContent = elem.read;
+    read.textContent = elem.read ? 'Read' : 'Not read yet';
     card.appendChild(read);
     const deleteButton = document.createElement('button');
+    deleteButton.classList.add('delete-button');
     deleteButton.textContent = 'DELETE';
     deleteButton.addEventListener('click', () => {
       const index = card.getAttribute('data-index');
@@ -40,7 +41,8 @@ function renderCard() {
     });
     card.appendChild(deleteButton);
     const changeButton = document.createElement('button');
-    changeButton.textContent = 'CHANGE';
+    changeButton.classList.add('change-button');
+    changeButton.textContent = 'STATUS';
     changeButton.addEventListener('click', () => {
       const index = card.getAttribute('data-index');
       myLibrary[index].read = !myLibrary[index].read;

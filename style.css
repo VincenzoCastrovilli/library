@@ -2,6 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: rgb(255, 218, 169);
 }
 
 .header {
@@ -9,9 +14,10 @@
   justify-content: center;
   align-items: center;
   height: 80px;
-  background-color: black;
+  background-color: rgb(71, 50, 19);
   color: white;
-  font-size: 24px;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 #book-container {
@@ -19,16 +25,68 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  background-color: rgb(255, 218, 169);
 }
 
 .card {
-  width: 200px;
-  height: 300px;
   border: 2px solid rgb(114, 76, 26);
+  border-left: 6px solid rgb(173, 62, 34);
+  border-radius: 10px;
   font-size: 20px;
   padding: 12px;
-  background-color: rgb(136, 91, 31);
+  background-color: rgb(133, 97, 51);
+  display: grid;
+  grid-template: repeat(5, 50px) / repeat(2, minmax(120px, 1fr));
+  grid-template-areas:
+    'book-title book-title '
+    'book-author book-author '
+    'book-read book-read '
+    '. book-pages'
+    'delete-button change-button ';
+}
+
+.book-author {
+  grid-area: book-author;
+}
+
+.book-title {
+  grid-area: book-title;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.book-pages {
+  justify-self: end;
+  grid-area: book-pages;
+}
+
+.book-read {
+  grid-area: book-read;
+}
+
+.delete-button {
+  grid-area: delete-button;
+  margin: 15px;
+  width: 80px;
+  height: 30px;
+  justify-self: center;
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(167, 22, 22);
+  border: 2px solid rgb(71, 50, 19);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.change-button {
+  grid-area: change-button;
+  margin: 15px;
+  width: 80px;
+  height: 30px;
+  justify-self: center;
+  border: 2px solid rgb(71, 50, 19);
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 #modal {
@@ -44,10 +102,11 @@
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: rgb(255, 218, 169);
   margin: 100px auto;
   padding: 20px;
-  border: 1px solid #888;
+  border: 2px solid rgb(71, 50, 19);
+  border-radius: 5px;
   width: 400px;
   font-size: 20px;
 }
@@ -66,7 +125,7 @@
 }
 
 #add-book {
-  position: absolute;
+  position: fixed;
   bottom: 50px;
   right: 50px;
   font-size: 20px;
@@ -99,5 +158,9 @@ form > button {
   font-size: 16px;
   padding: 8px;
   position: relative;
-  left: 68%;
+  left: 65%;
+  border-radius: 5px;
+  border: 2px solid rgb(71, 50, 19);
+  background-color: rgb(114, 76, 26);
+  cursor: pointer;
 }
